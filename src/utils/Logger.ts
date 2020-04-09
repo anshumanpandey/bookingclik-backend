@@ -1,6 +1,6 @@
-const pino = require('pino')
+const pino = require('pino');
 const noir = require('pino-noir')
-const logger = pino(pino.destination('./src/logs/logs.log'))
+const logger = pino(pino.destination(`./src/logs/logs.log`))
 
 const PinoExpress = require('express-pino-logger')({
   logger: logger,
@@ -12,4 +12,7 @@ const PinoExpress = require('express-pino-logger')({
   ['req.headers.authorization'])
 });
 
-export default PinoExpress;
+export {
+  PinoExpress,
+  logger
+};

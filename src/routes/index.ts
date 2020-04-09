@@ -3,6 +3,7 @@ import { AsyncHandler } from "../middlewares/AsyncMiddleware";
 
 export function Routes(app) {
   const TestController: Controllers.TestController = new Controllers.TestController();
+  const AuthController: Controllers.AuthController = new Controllers.AuthController();
   const SearchController: Controllers.SearchController = new Controllers.SearchController();
 
   app.route("/test")
@@ -10,4 +11,7 @@ export function Routes(app) {
 
     app.route("/search")
       .get(AsyncHandler(SearchController.index));
+
+  app.route("/login")
+    .get(AsyncHandler(AuthController.index));
 }

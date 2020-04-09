@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ErrorCatcher } from "./ErrorCatcher";
-import LoggerMiddleware from "../utils/Logger";
-
+import { PinoExpress } from "../utils/Logger";
+import config from "../config";
+import ErrorMiddleware from './ErrorMiddleware';
+const jwt = require('express-jwt');
 
 export function Middlewares(app) {
   app.use((req, _res, next) => {
@@ -10,7 +11,7 @@ export function Middlewares(app) {
     _res.header('X-req-id' , reqId);
     next();
   });
-  app.use(ErrorCatcher)
-  app.use(LoggerMiddleware)
-
+  app.use(PinoExpress)
+  app.use(jwt({ secret: config.JWT_SECRET }).unless({path: ['/login', '/test']}))
+  app.use(ErrorMiddleware)
 }
