@@ -14,4 +14,7 @@ export function Routes(app) {
 
   app.route("/login")
     .get(AsyncHandler(AuthController.index));
+
+  app.route("/iataCodes")
+    .get(AsyncHandler(SearchController.iataCodes));
 }

@@ -5,7 +5,7 @@ export class SearchController {
     public index(req: Request) {
 
         return axios({
-            url: process.env.SEARCH_API_URL,
+            url: `${process.env.SEARCH_API_URL}/search`,
             params: {
                 location: req.params.location,
                 puDate: req.params.puDate,
@@ -14,6 +14,7 @@ export class SearchController {
                 doTime: req.params.doTime,
                 currency: req.params.currency,
                 country: req.params.country,
+                json: true,
             }
         })
             .then(r => r.data)
@@ -21,5 +22,13 @@ export class SearchController {
                 console.log(xml)
                 return { success: true };
             })
+    }
+
+    public async iataCodes(req: Request) {
+
+        return axios({
+            url: `${process.env.SEARCH_API_URL}/iatacodes`,
+        })
+            .then(r => r.data)
     }
 }
