@@ -1,6 +1,6 @@
 const pino = require('pino');
 const noir = require('pino-noir')
-const logger = pino(pino.destination(`./src/logs/logs.log`))
+const logger = pino()
 
 const PinoExpress = require('express-pino-logger')({
   logger: logger,
