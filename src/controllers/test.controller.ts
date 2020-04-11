@@ -1,5 +1,5 @@
 export class TestController {
-  public index() {
+  public async index() {
     return { message: "Hello boi" };
   }
 }
