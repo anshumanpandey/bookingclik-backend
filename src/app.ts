@@ -14,7 +14,7 @@ class App {
     Middlewares(this.app);
     this.app.use(express.static(join(__dirname, '../','expedia-clone-frontend' , 'build')));
     this.app.get('*', (req, res) => {
-      res.sendFile(join(__dirname, 'expedia-clone-frontend' , 'build', 'index.html'));
+      res.sendFile(join(__dirname, '../','expedia-clone-frontend' , 'build', 'index.html'));
     });
     Routes(this.app);
     this.app.use((err, req, res, next) => {
