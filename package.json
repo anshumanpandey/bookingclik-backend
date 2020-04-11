@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "ts-node-dev ./src/server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd expedia-clone-frontend && yarn && yarn run build"
+    "heroku-postbuild": "cd expedia-clone-frontend && yarn install && yarn run build"
   },
   "keywords": [],
   "author": "",
