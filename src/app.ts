@@ -1,3 +1,4 @@
+import { join } from 'path';
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { sequelize, logger, AppError } from "./utils";
@@ -11,6 +12,7 @@ class App {
     this.app = express();
     this.config();
     Middlewares(this.app);
+    this.app.use(express.static(join(__dirname, 'expedia-clone-frontend' , 'build')));
     Routes(this.app);
     this.app.use((err, req, res, next) => {
       if (err instanceof AppError) {

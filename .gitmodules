@@ -1,0 +1,3 @@
+[submodule "expedia-clone-frontend"]
+	path = expedia-clone-frontend
+	url = https://github.com/anshumanpandey/expedia-clone-frontend
