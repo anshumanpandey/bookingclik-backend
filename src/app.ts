@@ -11,12 +11,12 @@ class App {
   constructor() {
     this.app = express();
     this.config();
-    Middlewares(this.app);
     this.app.use(express.static(join(__dirname, '../','expedia-clone-frontend' , 'build')));
+    Middlewares(this.app);
+    Routes(this.app);
     this.app.get('*', (req, res) => {
       res.sendFile(join(__dirname, '../','expedia-clone-frontend' , 'build', 'index.html'));
     });
-    Routes(this.app);
     this.app.use((err, req, res, next) => {
       if (err instanceof AppError) {
         res.status(err.response.status).send(err.response);
