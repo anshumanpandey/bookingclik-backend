@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { Request } from 'express'
 import { sequelize } from '../utils';
-const FuzzySearch = require('fuzzy-search');
 
 export class SearchController {
     public index(req: Request) {
