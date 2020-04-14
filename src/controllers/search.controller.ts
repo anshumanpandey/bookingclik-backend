@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { Request } from 'express'
+import { sequelize } from '../utils';
+const FuzzySearch = require('fuzzy-search');
 
 export class SearchController {
     public index(req: Request) {
@@ -12,9 +14,9 @@ export class SearchController {
             params: {
                 location: req.query.location,
                 puDate: req.query.puDate,
-                puTime: req.query.puTime || `${current_hour+1}:00`,
+                puTime: req.query.puTime || `${current_hour + 1}:00`,
                 doDate: req.query.doDate,
-                doTime: req.query.doTime || `${current_hour+1}:00`,
+                doTime: req.query.doTime || `${current_hour + 1}:00`,
                 currency: req.query.currency,
                 country: req.query.country,
                 json: true,
@@ -28,10 +30,7 @@ export class SearchController {
 
     public async iataCodes(req: Request) {
 
-        return axios({
-            url: `${process.env.SEARCH_API_URL}/getiatacodes`,
-            method: 'GET'
-        })
-            .then(r => r.data)
+        const [ results ] = await sequelize.query(`SELECT * from iata WHERE location LIKE '%${req.query.search}%'`);
+        return results;
     }
 }
