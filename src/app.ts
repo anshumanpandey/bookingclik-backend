@@ -11,11 +11,11 @@ class App {
   constructor() {
     this.app = express();
     this.config();
-    this.app.use(express.static(join(__dirname, '../','expedia-clone-frontend' , 'build')));
+    this.app.use(express.static(join(__dirname, '../','bookingclik-frontend' , 'build')));
     Middlewares(this.app);
     Routes(this.app);
     this.app.get('*', (req, res) => {
-      res.sendFile(join(__dirname, '../','expedia-clone-frontend' , 'build', 'index.html'));
+      res.sendFile(join(__dirname, '../','bookingclik-frontend' , 'build', 'index.html'));
     });
     this.app.use((err, req, res, next) => {
       if (err instanceof AppError) {
