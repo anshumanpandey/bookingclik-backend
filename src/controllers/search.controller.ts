@@ -29,7 +29,7 @@ export class SearchController {
 
     public async iataCodes(req: Request) {
 
-        const [ results ] = await sequelize.query(`SELECT * from iata WHERE location LIKE '%${req.query.search}%'`);
+        const [ results ] = await sequelize.query(`SELECT * from iata WHERE location LIKE '%${req.query.search}%' or code LIKE '%${req.query.search}%'`);
         return results;
     }
 }
