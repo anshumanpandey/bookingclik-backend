@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Request } from 'express'
 import { sequelize } from '../utils';
+const qs = require('qs')
 
 export class SearchController {
     public index(req: Request) {
@@ -19,6 +20,10 @@ export class SearchController {
                 currency: req.query.currency,
                 country: req.query.country,
                 json: true,
+                ...req.query
+            },
+            paramsSerializer: params => {
+                return qs.stringify(params)
             }
         })
             .then(r => r.data)
