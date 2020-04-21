@@ -37,4 +37,14 @@ export class SearchController {
         const [ results ] = await sequelize.query(`SELECT * from iata WHERE location LIKE '%${req.query.search}%' or code LIKE '%${req.query.search}%'`);
         return results;
     }
+
+    public async filters(req: Request) {
+
+        return axios({
+            url: `${process.env.SEARCH_API_URL}/categories/${req.params.offering}`,
+        })
+            .then(r => r.data)
+            .then(r => r.filter(v => v.disabled !== true))
+            .then(res => res)
+    }
 }

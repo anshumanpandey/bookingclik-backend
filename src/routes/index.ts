@@ -29,4 +29,7 @@ export function Routes(app: express.Router) {
 
   app.route("/iataCodes")
     .get(AsyncHandler(SearchController.iataCodes));
+
+  app.route("/categories/:offering")
+    .get(AsyncHandler(SearchController.filters));
 }
