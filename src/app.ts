@@ -38,7 +38,7 @@ class App {
 
   private bootstrap() {
     return Promise.all([
-      sequelize.authenticate()
+      //sequelize.authenticate()
     ]);
   }
 
@@ -48,8 +48,8 @@ class App {
     this.bootstrap()
     .then(() => this.app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`)))
     .catch(err => {
-      logger.error('Could not start app!');
       logger.error(err);
+      logger.error('Could not start app!');
       process.exit(0);
     });
   }
