@@ -12,7 +12,7 @@ export class SearchController {
         return axios({
             url: `${process.env.SEARCH_API_URL}/search`,
             params: {
-                location: req.query.location,
+                location: req.query.locationId,
                 puDate: req.query.puDate,
                 puTime: req.query.puTime || `${current_hour + 1}:00`,
                 doDate: req.query.doDate,
@@ -20,7 +20,6 @@ export class SearchController {
                 currency: req.query.currency,
                 country: req.query.country,
                 json: true,
-                ...req.query
             },
             paramsSerializer: params => {
                 return qs.stringify(params)
