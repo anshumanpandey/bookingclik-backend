@@ -31,7 +31,6 @@
     "pino-tee": "^0.3.0",
     "qs": "^6.9.3",
     "sequelize": "^5.21.6",
-    "sqlite3": "^4.1.1",
     "uuid": "^7.0.3"
   },
   "devDependencies": {
@@ -41,6 +40,7 @@
     "@types/sequelize": "^4.28.8",
     "@types/validator": "^12.0.1",
     "sqlite": "^4.0.5",
+    "sqlite3": "^4.1.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   },
