@@ -1,3 +1,4 @@
 [submodule "bookingclik-frontend"]
 	path = bookingclik-frontend
 	url = https://github.com/anshumanpandey/bookingclik-frontend
+	branch = only-cars
